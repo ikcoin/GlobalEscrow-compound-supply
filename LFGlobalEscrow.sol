@@ -1,6 +1,7 @@
 pragma solidity 0.8.4;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "https://github.com/compound-finance/compound-protocol/blob/master/contracts/CEther.sol";
 
 contract LFGlobalEscrow is Ownable {
 
@@ -123,6 +124,12 @@ contract LFGlobalEscrow is Ownable {
         _escrow[_referenceId].signer[msg.sender] = true;
         _escrow[_referenceId].signer[_receiver] = true;
         _escrow[_referenceId].signer[_agent] = true;
+
+        //Ether supplying to Compound at the point of deposit:
+        CEther cEthToken = CEther('0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5'); //contract address, the cEth contract address
+        uint mintResult = cEthToken.mint(e.fund); //num Tokens to supply
+
+
     }
 
     function release(string memory _referenceId) public multisigcheck(_referenceId) {
