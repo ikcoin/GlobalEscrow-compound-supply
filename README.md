@@ -1,6 +1,11 @@
 # GlobalEscrow-compound-supply
 
+Supply Ether locked in the smart contract escrow to the Compound protocol via Solidity.
+- https://github.com/compound-developers/compound-supply-examples
+
 ## Eher supply to Compound protocol
+
+Ether is supplied to Compound at the point of deposit.
 
 ```solidity
 205   //Ether supplying to Compound at the point of deposit:
@@ -10,6 +15,8 @@
 ```
 
 ##  Ether retrieve
+
+Ether is subsequently retrieved at the point of withdrawal.
 
 ```solidity
 271   //Ether retrieved only at the point of withdrawal:
